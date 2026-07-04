@@ -881,3 +881,39 @@ a {
 .uuid-list p {
   color: #64748b;
 }
+
+.qr-panel {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.qr-panel textarea {
+  min-height: 140px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  resize: vertical;
+  font-size: 16px;
+}
+
+.qr-preview {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(226,232,240,.95);
+}
+
+.qr-preview img {
+  width: 260px;
+  height: 260px;
+}
+
+.qr-image {
+  width: 260px;
+  height: 260px;
+}

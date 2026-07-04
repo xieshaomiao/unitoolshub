@@ -35,7 +35,7 @@ export const tools = [
     id: "qr-code-generator",
     name: "QR Code Generator",
     description: "Create custom QR codes for any content.",
-    href: "#",
+    href: "/tools/qrcode",
     category: "Generator",
     icon: QrCode,
     tone: "purple",
