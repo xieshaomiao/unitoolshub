@@ -1,45 +1,100 @@
 "use client";
 
 import { useState } from "react";
+import { Copy, FileJson2, Minimize2, Sparkles, Trash2 } from "lucide-react";
 
 export default function Page() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [status, setStatus] = useState("Ready");
 
   function formatJson() {
     try {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed, null, 2));
+      setStatus("Valid JSON");
     } catch {
-      setOutput("Invalid JSON");
+      setOutput("");
+      setStatus("Invalid JSON");
     }
+  }
+
+  function minifyJson() {
+    try {
+      const parsed = JSON.parse(input);
+      setOutput(JSON.stringify(parsed));
+      setStatus("Minified");
+    } catch {
+      setOutput("");
+      setStatus("Invalid JSON");
+    }
+  }
+
+  async function copyOutput() {
+    await navigator.clipboard.writeText(output);
+    setStatus("Copied");
   }
 
   function clearAll() {
     setInput("");
     setOutput("");
+    setStatus("Ready");
   }
 
   return (
-    <main style={{ padding: 40, maxWidth: 1000, margin: "0 auto", fontFamily: "sans-serif" }}>
-      <h1>JSON Formatter</h1>
-      <p>Format and validate JSON instantly.</p>
+    <main className="tool-page">
+      <section className="tool-hero">
+        <div className="tool-icon-large">
+          <FileJson2 size={34} />
+        </div>
 
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder='Paste JSON here, for example: {"name":"UniToolsHub"}'
-        style={{ width: "100%", height: 220, marginTop: 20, padding: 12 }}
-      />
+        <h1>JSON Formatter</h1>
+        <p>Format, validate, minify and beautify JSON instantly.</p>
 
-      <div style={{ marginTop: 16, display: "flex", gap: 10 }}>
-        <button onClick={formatJson}>Format JSON</button>
-        <button onClick={clearAll}>Clear</button>
+        <div className="tool-status">{status}</div>
+      </section>
+
+      <section className="tool-panel">
+        <div className="editor-card">
+          <div className="editor-header">
+            <span>Input JSON</span>
+            <button onClick={clearAll}>
+              <Trash2 size={16} />
+              Clear
+            </button>
+          </div>
+
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder='Paste JSON here, for example: {"name":"UniToolsHub"}'
+          />
+        </div>
+
+        <div className="editor-card">
+          <div className="editor-header">
+            <span>Output</span>
+            <button onClick={copyOutput} disabled={!output}>
+              <Copy size={16} />
+              Copy
+            </button>
+          </div>
+
+          <pre>{output || "Formatted JSON will appear here..."}</pre>
+        </div>
+      </section>
+
+      <div className="tool-actions">
+        <button onClick={formatJson}>
+          <Sparkles size={18} />
+          Format JSON
+        </button>
+
+        <button onClick={minifyJson}>
+          <Minimize2 size={18} />
+          Minify JSON
+        </button>
       </div>
-
-      <pre style={{ marginTop: 20, padding: 16, background: "#111", color: "#00ff88", overflow: "auto" }}>
-        {output}
-      </pre>
     </main>
   );
 }
