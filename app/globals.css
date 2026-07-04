@@ -851,3 +851,33 @@ a {
   font-size: 13px;
   background: rgba(248, 250, 252, 0.7);
 }
+
+.uuid-panel {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 24px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(226,232,240,.95);
+  box-shadow: 0 18px 45px rgba(15,23,42,.08);
+  overflow: hidden;
+}
+
+.uuid-list {
+  min-height: 320px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.uuid-list code {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #0f172a;
+  color: hsl(142, 77%, 73%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.uuid-list p {
+  color: #64748b;
+}
