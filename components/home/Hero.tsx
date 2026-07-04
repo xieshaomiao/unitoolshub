@@ -1,3 +1,5 @@
+import SearchModal from "./SearchModal";
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -16,11 +18,7 @@ export default function Hero() {
         designers, students and everyone.
       </p>
 
-      <div className="hero-search">
-        <span>🔍 Search tools...</span>
-
-        <kbd>⌘ K</kbd>
-      </div>
+      <SearchModal />
 
       <div className="hero-features">
         <span>⚡ Fast</span>
