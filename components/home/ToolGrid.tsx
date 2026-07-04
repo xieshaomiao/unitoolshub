@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools";
 
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
+
 export default function ToolGrid() {
   return (
     <section className="tools-section">
@@ -17,19 +20,23 @@ export default function ToolGrid() {
 
             return (
               <Link
-                className="tool-card"
                 href={tool.href}
                 key={tool.id}
+                style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div className={`tool-icon ${tool.tone}`}>
-                  <Icon size={30} strokeWidth={2.4} />
-                </div>
+                <Card className="tool-card">
+                  <div className={`tool-icon ${tool.tone}`}>
+                    <Icon size={30} strokeWidth={2.4} />
+                  </div>
 
-                <h3>{tool.name}</h3>
+                  <h3>{tool.name}</h3>
 
-                <p>{tool.description}</p>
+                  <p>{tool.description}</p>
 
-                <button>Try Now →</button>
+                  <Button variant="secondary">
+                    Try Now →
+                  </Button>
+                </Card>
               </Link>
             );
           })}

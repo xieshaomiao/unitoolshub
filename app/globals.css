@@ -789,3 +789,65 @@ a {
     font-size: 42px;
   }
 }
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  color: white;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.25);
+}
+
+.btn-secondary {
+  color: #4f46e5;
+  background: #eef2ff;
+}
+
+.btn-ghost {
+  color: #475569;
+  background: transparent;
+}
+
+.card {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
+}
+
+.card-hover {
+  transition: 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editor-footer {
+  padding: 10px 18px;
+  border-top: 1px solid #e5e7eb;
+  color: #64748b;
+  font-size: 13px;
+  background: rgba(248, 250, 252, 0.7);
+}

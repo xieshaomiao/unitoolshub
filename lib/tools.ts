@@ -15,7 +15,7 @@ export const tools = [
     id: "base64",
     name: "Base64 Encode / Decode",
     description: "Encode and decode Base64 strings easily.",
-    href: "#",
+  href: "/tools/base64",
     category: "Developer",
     icon: Lock,
     tone: "blue",
