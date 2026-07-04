@@ -3,13 +3,7 @@
 import Link from "next/link";
 import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const tools = [
-  { name: "JSON Formatter", desc: "Format and validate JSON", href: "/tools/json" },
-  { name: "Base64 Encode / Decode", desc: "Encode and decode Base64", href: "#" },
-  { name: "UUID Generator", desc: "Generate UUID v4", href: "#" },
-  { name: "QR Code Generator", desc: "Create QR codes", href: "#" },
-];
+import { tools } from "@/lib/tools";
 
 export default function SearchModal() {
   const [open, setOpen] = useState(false);
@@ -32,7 +26,9 @@ export default function SearchModal() {
   }, []);
 
   const results = tools.filter((tool) =>
-    tool.name.toLowerCase().includes(keyword.toLowerCase())
+    `${tool.name} ${tool.description} ${tool.category}`
+      .toLowerCase()
+      .includes(keyword.toLowerCase())
   );
 
   return (
@@ -60,9 +56,9 @@ export default function SearchModal() {
 
             <div className="search-results">
               {results.map((tool) => (
-                <Link href={tool.href} key={tool.name} onClick={() => setOpen(false)}>
+                <Link href={tool.href} key={tool.id} onClick={() => setOpen(false)}>
                   <strong>{tool.name}</strong>
-                  <span>{tool.desc}</span>
+                  <span>{tool.description}</span>
                 </Link>
               ))}
 

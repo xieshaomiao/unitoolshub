@@ -3,7 +3,7 @@ import { Search, Moon, Wrench } from "lucide-react";
 
 const menus = [
   { title: "Home", href: "/" },
-  { title: "Tools", href: "#" },
+  { title: "Tools", href: "/tools" },
   { title: "Categories", href: "#" },
   { title: "About", href: "#" },
 ];

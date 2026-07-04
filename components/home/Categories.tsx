@@ -1,15 +1,25 @@
-import { Code2, Type, Image, Palette, Shield, Calculator } from "lucide-react";
+import { Code2, Fingerprint } from "lucide-react";
+import { tools } from "@/lib/tools";
 
-const categories = [
-  { name: "Developer", count: "12 tools", icon: Code2 },
-  { name: "Text", count: "8 tools", icon: Type },
-  { name: "Image", count: "6 tools", icon: Image },
-  { name: "Color", count: "5 tools", icon: Palette },
-  { name: "Security", count: "7 tools", icon: Shield },
-  { name: "Math", count: "4 tools", icon: Calculator },
-];
+const categoryIcons = {
+  Developer: Code2,
+  Generator: Fingerprint,
+};
 
 export default function Categories() {
+  const categories = Array.from(
+    new Map(
+      tools.map((tool) => [
+        tool.category,
+        {
+          name: tool.category,
+          count: tools.filter((item) => item.category === tool.category).length,
+          icon: categoryIcons[tool.category as keyof typeof categoryIcons] || Code2,
+        },
+      ])
+    ).values()
+  );
+
   return (
     <section className="categories-section">
       <div className="section-title">
@@ -25,7 +35,7 @@ export default function Categories() {
             <div className="category-card" key={item.name}>
               <Icon size={28} />
               <strong>{item.name}</strong>
-              <span>{item.count}</span>
+              <span>{item.count} tools</span>
             </div>
           );
         })}
